@@ -144,7 +144,7 @@ plot_series_results <- function(plot_function_series.format           = c("A", "
                                 plot_function_teamA.name              = "teamA", 
                                 plot_function_teamB.name              = "teamB",
                                 plot_function_p.teamA                 = .5, 
-                                plot_function_p.home.ice              = .00, 
+                                plot_function_p.home.ice              = .04, 
                                 plot_function_how.many.wins.teamA.has = 0, 
                                 plot_function_how.many.wins.teamB.has = 0, 
                                 plot_function_n.simulations           = 10000){
@@ -160,8 +160,10 @@ plot_series_results <- function(plot_function_series.format           = c("A", "
   pr.teamA.wins.series <- round( sum(simulated_results[1:4]), 2)
   # Barplot the simulated results
   barplot(simulated_results,
+          ylim=c(0,.25),  # Standardize size of y axis for easy comparison across multiple plots
           names.arg = names(simulated_results),
-          main=paste(plot_function_teamA.name, "-", plot_function_teamB.name, "Simulated Series"),
+          main=paste(plot_function_teamA.name, "-", plot_function_teamB.name, "Series: Forecasted Before Game",
+                     plot_function_how.many.wins.teamA.has + plot_function_how.many.wins.teamB.has + 1),
           sub=paste("Pr(" , plot_function_teamA.name, " wins the series) = ", pr.teamA.wins.series, sep=""),
           xlab=paste(plot_function_teamA.name, "wins -", plot_function_teamB.name, "wins", sep=" "),
           ylab="estimated probability")
@@ -169,12 +171,65 @@ plot_series_results <- function(plot_function_series.format           = c("A", "
 }
 
 
-# Example: Boston-Detroit series before game 1
-plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "B", "A", "A"),
-                    plot_function_teamA.name="Boston", 
-                    plot_function_teamB.name="Detroit", 
-                    plot_function_p.teamA=.62, 
-                    plot_function_p.home.ice=.04, 
-                    plot_function_how.many.wins.teamA.has=0, 
-                    plot_function_how.many.wins.teamB.has=0, 
-                    plot_function_n.simulations=10000)
+
+## Calculate the Vegas implied probability from moneyline odds.  See this post for more:
+## http://www.majorwager.com/forums/handicapping-think-tank/143403-moneyline-without-juice.html#post1195868.
+## I use the average moneyline
+calculate_teamA_Vegas_implied_probability <- function(teamA.moneyline, 
+                                                      teamB.moneyline,
+                                                      home.ice.advantage=.04){
+  
+  if(teamA.moneyline < 0)  teamA.win.probability <- -teamA.moneyline/(-teamA.moneyline + 100)  else   teamA.win.probability <- 100/(teamA.moneyline + 100)
+  if(teamB.moneyline < 0)  teamB.win.probability <- -teamB.moneyline/(-teamB.moneyline + 100)  else   teamB.win.probability <- 100/(teamB.moneyline + 100)
+  
+  teamA_implied_probability <- teamA.win.probability / (teamA.win.probability + teamB.win.probability) - home.ice.advantage
+  
+  return(teamA_implied_probability)
+  
+}
+
+
+
+# Example: Boston-Detroit series before game 3
+png("/Users/User/Desktop/Boston-Detroit before game 3.png",
+    width=7, height=7, units="in", res=200)
+
+  par(mfrow=c(3,1))
+
+  # Before game 1
+  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+                      plot_function_teamA.name="Boston", 
+                      plot_function_teamB.name="Detroit", 
+                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-214, 
+                                                                                      teamB.moneyline=172, 
+                                                                                      home.ice.advantage=.04), 
+                      plot_function_p.home.ice=.04, 
+                      plot_function_how.many.wins.teamA.has=0, 
+                      plot_function_how.many.wins.teamB.has=0, 
+                      plot_function_n.simulations=10000)
+
+  # Before game 2 (Detroit won the first game)
+  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+                      plot_function_teamA.name="Boston", 
+                      plot_function_teamB.name="Detroit", 
+                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
+                                                                                      teamB.moneyline=186, 
+                                                                                      home.ice.advantage=.04), 
+                      plot_function_p.home.ice=.04, 
+                      plot_function_how.many.wins.teamA.has=0, 
+                      plot_function_how.many.wins.teamB.has=1, 
+                      plot_function_n.simulations=10000)
+
+  # Before game 3 (Boston won the second game)
+  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+                      plot_function_teamA.name="Boston", 
+                      plot_function_teamB.name="Detroit", 
+                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
+                                                                                      teamB.moneyline=186, 
+                                                                                      home.ice.advantage=.04), 
+                      plot_function_p.home.ice=.04, 
+                      plot_function_how.many.wins.teamA.has=1, 
+                      plot_function_how.many.wins.teamB.has=1, 
+                      plot_function_n.simulations=10000)
+
+dev.off()
