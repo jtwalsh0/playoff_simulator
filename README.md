@@ -1,4 +1,4 @@
-home_ice_advantage
+Playoff Simulator
 ==================
 
 This script uses simulation to estimate the probability of one team beating another in a playoff series and to plot the results.  The user can choose the following inputs: 
