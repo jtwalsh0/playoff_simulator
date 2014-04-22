@@ -4,7 +4,7 @@ Playoff Simulator
 This script uses simulation to estimate the probability of one team beating another in a playoff series and to plot the results.  The user can choose the following inputs: 
 
  1.  `series.format` is a vector of As and Bs to define [the format of the playoff series](en.wikipedia.org/wiki/Playoff_format).  The default is 2-2-1-1-1 ("A", "A", "B", "B", "A", "B", "A"), but user can define a series with any odd-numbered length.  For example, a 2-3-2 format would be ("A", "A", "B", "B", "B", "A", "A"), a 2-1 format would be ("A", "A", "B"), and a 0-5 (all games at team B's ice) would be ("B", "B", "B", "B", "B").
- 2.  `teamA.name` is the name of the team with home-ice advantage (7th game played there)
+ 2.  `teamA.name` is the name of the team with home-ice advantage (that is, the 7th game is played there)
  3.  `teamB.name` is the name of the team without home-ice advantage
  4.  `p.teamA` is the probability that team A beats team B on neutral ice
  5.  `p.home.ice` is the increased probability that team A beats team B on team A's ice and the probability that team B beats team A on team B's ice.  The default is 0.04, which was the single-game home-ice advantage in 2013 ([citation](http://www.sportingcharts.com/nhl/stats/team-home-and-away-winning-percentages/2013/)).
