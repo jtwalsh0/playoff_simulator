@@ -8,7 +8,7 @@ shinyUI (fluidPage (
 
       textInput(inputId = "series_format",
         label = "vector of As and Bs to define the format of the playoff series",
-        value = c("A", "A", "B", "B", "A", "B", "A")),
+        value = "A, A, B, B, A, B, A"),
 
       textInput(inputId = "teamA",
         label = "team A's name",
