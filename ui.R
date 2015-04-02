@@ -1,6 +1,6 @@
 shinyUI (fluidPage (
 
-  titlePanel("Playoff Simulator"),
+  titlePanel("Playoff-Series Simulator"),
 
   sidebarLayout(
 
@@ -23,7 +23,7 @@ shinyUI (fluidPage (
         value = .6),
 
       numericInput(inputId = "p_homeice",
-        label = a("Home-ice advantage (percentage swing for two equal teams):", href="http://www.sportingcharts.com/nhl/stats/team-home-and-away-winning-percentages/2013/"),
+        label = "Home-ice advantage (percentage-point swing for two equal teams):", #a(href="http://www.sportingcharts.com/nhl/stats/team-home-and-away-winning-percentages/2013/"),
         value = .08),
 
       numericInput(inputId = "teamA_wins",
