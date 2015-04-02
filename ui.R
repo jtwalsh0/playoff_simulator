@@ -23,7 +23,7 @@ shinyUI (fluidPage (
         value = .6),
 
       numericInput(inputId = "p_homeice",
-        label = h3("Home-ice advantage (percentage swing for two equal teams):"),
+        label = a("Home-ice advantage (percentage swing for two equal teams):", href="http://www.sportingcharts.com/nhl/stats/team-home-and-away-winning-percentages/2013/"),
         value = .08),
 
       numericInput(inputId = "teamA_wins",
