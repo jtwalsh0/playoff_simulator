@@ -6,10 +6,6 @@ shinyUI (fluidPage (
 
     sidebarPanel(
 
-      textInput(inputId = "series_format",
-        label = "vector of As and Bs to define the format of the playoff series",
-        value = "A, A, B, B, A, B, A"),
-
       textInput(inputId = "teamA",
         label = "team A's name",
         value = "Tampa Bay"),
@@ -18,9 +14,13 @@ shinyUI (fluidPage (
         label = "team B's name",
         value = "Detroit"),
 
+      textInput(inputId = "series_format",
+        label = "vector of As and Bs to define the format of the playoff series",
+        value = "A, A, B, B, A, B, A"),
+
       numericInput(inputId = "p_teamA",
         label = "probability that team A wins on neutral ice:",
-        value = .5),
+        value = .6),
 
       numericInput(inputId = "p_homeice",
         label = "home-ice advantage (percentage increase):",
