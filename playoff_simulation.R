@@ -160,7 +160,7 @@ plot_series_results <- function(plot_function_series.format           = c("A", "
   pr.teamA.wins.series <- round( sum(simulated_results[1:4]), 2)
   # Barplot the simulated results
   barplot(simulated_results,
-          ylim=c(0,.25),  # Standardize size of y axis for easy comparison across multiple plots
+          ylim=c(0, max(simulated_results)),  # Standardize size of y axis for easy comparison across multiple plots
           names.arg = names(simulated_results),
           main=paste(plot_function_teamA.name, "-", plot_function_teamB.name, "Series: Forecasted Before Game",
                      plot_function_how.many.wins.teamA.has + plot_function_how.many.wins.teamB.has + 1),
