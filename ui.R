@@ -42,7 +42,7 @@ shinyUI (fluidPage (
     
     mainPanel(
 
-      plotOutput(outputId = "main_plot", width = "400px", height = "600px")
+      plotOutput(outputId = "main_plot", width = "100%", height = "500px")
       
       )
 
