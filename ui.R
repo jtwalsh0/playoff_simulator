@@ -1,16 +1,19 @@
-shinyUI(fluidPage(
+shinyUI (fluidPage (
+
   titlePanel("Playoff Simulator"),
+
   sidebarLayout(
+    
     sidebarPanel(
 
-      textInput(inputId = "series_format",
-        value = "vector of As and Bs to define the format of the playoff series:"),
+      # textInput(inputId = "series_format",
+      #   value = "vector of As and Bs to define the format of the playoff series:"),
 
-      textInput(inputId = "teamA",
-        value = "team A's name"),
+      # textInput(inputId = "teamA",
+      #   value = "team A's name"),
 
-      textInput(inputId = "teamB",
-        value = "team B's name"),
+      # textInput(inputId = "teamB",
+      #   value = "team B's name"),
 
       numericInput(inputId = "p_teamA",
         label = "probability that team A wins on neutral ice:",
