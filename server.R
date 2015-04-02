@@ -5,7 +5,7 @@ shinyServer(function(input, output) {
     source("playoff_simulation.R")
 
     series.format = gsub(' ', '', input$series_format)
-    series.format = strsplit(series.format, ',')
+    series.format = strsplit(series.format, ',')[[1]]
 
     plot_series_results(plot_function_series.format           = series.format,
                         plot_function_teamA.name              = input$teamA, 
