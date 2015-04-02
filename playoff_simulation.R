@@ -191,45 +191,45 @@ calculate_teamA_Vegas_implied_probability <- function(teamA.moneyline,
 
 
 # Example: Boston-Detroit series before game 3
-png("/Users/User/Desktop/Boston-Detroit before game 3.png",
-    width=7, height=7, units="in", res=200)
+# png("/Users/User/Desktop/Boston-Detroit before game 3.png",
+#     width=7, height=7, units="in", res=200)
 
-  par(mfrow=c(3,1))
+#   par(mfrow=c(3,1))
 
-  # Before game 1
-  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
-                      plot_function_teamA.name="Boston", 
-                      plot_function_teamB.name="Detroit", 
-                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-214, 
-                                                                                      teamB.moneyline=172, 
-                                                                                      home.ice.advantage=.04), 
-                      plot_function_p.home.ice=.04, 
-                      plot_function_how.many.wins.teamA.has=0, 
-                      plot_function_how.many.wins.teamB.has=0, 
-                      plot_function_n.simulations=10000)
+#   # Before game 1
+#   plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+#                       plot_function_teamA.name="Boston", 
+#                       plot_function_teamB.name="Detroit", 
+#                       plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-214, 
+#                                                                                       teamB.moneyline=172, 
+#                                                                                       home.ice.advantage=.04), 
+#                       plot_function_p.home.ice=.04, 
+#                       plot_function_how.many.wins.teamA.has=0, 
+#                       plot_function_how.many.wins.teamB.has=0, 
+#                       plot_function_n.simulations=10000)
 
-  # Before game 2 (Detroit won the first game)
-  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
-                      plot_function_teamA.name="Boston", 
-                      plot_function_teamB.name="Detroit", 
-                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
-                                                                                      teamB.moneyline=186, 
-                                                                                      home.ice.advantage=.04), 
-                      plot_function_p.home.ice=.04, 
-                      plot_function_how.many.wins.teamA.has=0, 
-                      plot_function_how.many.wins.teamB.has=1, 
-                      plot_function_n.simulations=10000)
+#   # Before game 2 (Detroit won the first game)
+#   plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+#                       plot_function_teamA.name="Boston", 
+#                       plot_function_teamB.name="Detroit", 
+#                       plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
+#                                                                                       teamB.moneyline=186, 
+#                                                                                       home.ice.advantage=.04), 
+#                       plot_function_p.home.ice=.04, 
+#                       plot_function_how.many.wins.teamA.has=0, 
+#                       plot_function_how.many.wins.teamB.has=1, 
+#                       plot_function_n.simulations=10000)
 
-  # Before game 3 (Boston won the second game)
-  plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
-                      plot_function_teamA.name="Boston", 
-                      plot_function_teamB.name="Detroit", 
-                      plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
-                                                                                      teamB.moneyline=186, 
-                                                                                      home.ice.advantage=.04), 
-                      plot_function_p.home.ice=.04, 
-                      plot_function_how.many.wins.teamA.has=1, 
-                      plot_function_how.many.wins.teamB.has=1, 
-                      plot_function_n.simulations=10000)
+#   # Before game 3 (Boston won the second game)
+#   plot_series_results(plot_function_series.format=c("A", "A", "B", "B", "A", "B", "A"),
+#                       plot_function_teamA.name="Boston", 
+#                       plot_function_teamB.name="Detroit", 
+#                       plot_function_p.teamA=calculate_teamA_Vegas_implied_probability(teamA.moneyline=-226, 
+#                                                                                       teamB.moneyline=186, 
+#                                                                                       home.ice.advantage=.04), 
+#                       plot_function_p.home.ice=.04, 
+#                       plot_function_how.many.wins.teamA.has=1, 
+#                       plot_function_how.many.wins.teamB.has=1, 
+#                       plot_function_n.simulations=10000)
 
-dev.off()
+# dev.off()
